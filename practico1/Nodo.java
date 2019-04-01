@@ -3,6 +3,7 @@ package practico1;
 public class Nodo {
 	private Object info;
 	private Nodo next;
+	
 	public Nodo() {
 		this.info = null;
 		this.next = null;
