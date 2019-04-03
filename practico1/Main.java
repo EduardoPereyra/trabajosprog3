@@ -42,10 +42,11 @@ public class Main {
 		
 		/*Ejercicio 5*/
 
-/*		
+		
 		ListInt lista1 = new ListInt();
 		ListInt lista2 = new ListInt();
-		
+
+/*		
 		lista1.insertFront(4);
 		lista1.insertFront(3);
 		lista1.insertFront(2);
@@ -58,6 +59,20 @@ public class Main {
 		lista2.insertOrdenado(2);
 		lista2.insertOrdenado(6);
 		lista2.insertOrdenado(5);
+*/
+		
+		lista1.insertFront(4);
+		lista1.insertFront(3);
+		lista1.insertFront(2);
+		lista1.insertFront(1);
+		lista1.insertFront(7);
+		lista1.insertFront(6);
+		lista1.insertFront(9);
+		
+		lista2.insertFront(4);
+		lista2.insertFront(2);
+		lista2.insertFront(6);
+		lista2.insertFront(5);
 		
 		ListInt.MyIterator it1 = lista1.iterator();
 		System.out.println("lista 1");
@@ -71,7 +86,7 @@ public class Main {
 			int tmp2 = it2.next();
 			System.out.println(tmp2);
 		}
-		
+/*		
 		ListInt listanueva = listaiguales(lista1,lista2);
 		
 		ListInt.MyIterator it3 = listanueva.iterator();
@@ -82,16 +97,16 @@ public class Main {
 		}
 */		
 		/*Ejercicio 6*/
-/*	
+	
 		ListInt listanueva2 = listaprimeraSisegundaNo(lista1,lista2);
 		
 		ListInt.MyIterator it = listanueva2.iterator();
-		System.out.println("lista ordenada con distintos de la primera lista");
+		System.out.println("lista con distintos de la primera lista");
 		while(it.hasNext()) {
 			int tmp = it.next();
 			System.out.println(tmp);
 		}
-*/		
+		
 	}
 	
 /*	
@@ -116,27 +131,28 @@ public class Main {
 		}
 		return auxList;	
 	}
+*/
 	
 	public static ListInt listaprimeraSisegundaNo(ListInt lista1 , ListInt lista2) { //Ejercicio 6
 		ListInt auxList = new ListInt();
 		ListInt.MyIterator it1 = lista1.iterator();
-		ListInt.MyIterator it2 = lista2.iterator();
 		
-		while(it1.hasNext() && it2.hasNext()) {
-			int valor1 = it1.get();
-			int valor2 = it2.get();
-			
-			if((valor1 < valor2)) {
-				auxList.insertOrdenado(valor1);
-				it1.next();
-			}else if(valor1 == valor2) {
-				it1.next();
-				it2.next();
-			}else {
-				it2.next();
+		while(it1.hasNext()) {
+			ListInt.MyIterator it2 = lista2.iterator();
+			boolean contiene = false;
+			while((it2.hasNext())&&(!contiene)) {
+				if(it1.get() == it2.get()) {
+					contiene = true;
+				}else {
+					it2.next();
+				}
 			}
+			if(!contiene) { //si es que llego al final
+				auxList.insertFront(it1.get());
+			}
+			it1.next();
 		}
 		return auxList;	
 	}
-*/
+
 }
