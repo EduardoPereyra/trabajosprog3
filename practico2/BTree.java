@@ -11,10 +11,52 @@ public class BTree {
 	
 	public void add(int n) {
 		if(this.root != null) {
-			this.root.add(n);
+			addpv(this.root, n);		
+			
 		}else {
 			this.root = new TNode(n);
 		}
+	}
+	
+	private void addpv(TNode nodo, int x) { //crea un arbol ordenado
+		if(nodo.getN() != 0) {
+			if(nodo.getN() < x) {
+				if(nodo.getRight() != null) {
+					addpv(nodo.getRight(),x);
+				}else {
+					nodo.setRight(new TNode(x));
+				}
+			}else {
+				if(nodo.getLeft() != null) {
+					addpv(nodo.getLeft(),x);
+				}else {
+					nodo.setLeft(new TNode(x));
+				}	
+			}
+		}else {
+			nodo.setN(x);
+		}	
+	}
+	
+	public ArrayList<Integer> getHojas(){
+		ArrayList<Integer> lista = new ArrayList<>();
+		getHojaspv(root,lista);
+		return lista;
+	}
+	
+	private ArrayList<Integer> getHojaspv(TNode nodo, ArrayList<Integer> listaHojas){
+		if(nodo.isHoja()) {
+			listaHojas.add(nodo.getN());
+		}else{
+			if(nodo.getLeft() != null) {
+				getHojaspv(nodo.getLeft(),listaHojas);
+			}
+			if(nodo.getRight() != null) {
+				getHojaspv(nodo.getRight(),listaHojas);
+			}
+			return listaHojas;
+		}
+		return listaHojas;
 	}
 	
 	public void imprimir() {
@@ -62,10 +104,4 @@ public class BTree {
 		return lista;
 	}
 */
-	
-	public ArrayList<Integer> getHojas(){
-		ArrayList<Integer> lista = new ArrayList<>();
-		this.root.getHojas(lista);
-		return lista;
-	}
 }

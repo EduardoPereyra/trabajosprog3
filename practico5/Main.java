@@ -10,8 +10,7 @@ public class Main {
 
 	}
 	
-	public static void ejercicio1(int pos_entrada, int pos_salida) {
-		
+	public static void ejercicio1(int pos_entrada, int pos_salida) {		
 		ArrayList<Habitacion> recorrido_mayor = new ArrayList<>();
 		ArrayList<Habitacion> recorrido_actual = new ArrayList<>();
 		back1(recorrido_mayor, recorrido_actual, habitaciones.get(pos_entrada));

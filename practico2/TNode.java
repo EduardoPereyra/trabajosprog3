@@ -1,7 +1,5 @@
 package practico2;
 
-import java.util.ArrayList;
-
 public class TNode {
 	private TNode left;
 	private TNode right;
@@ -14,14 +12,27 @@ public class TNode {
 	public int getN() {
 		return this.n;
 	}
-	
-	public int getLeft() {
-		return this.left.getN();
+
+	public void setN(int n) {
+		this.n = n;
 	}
 	
-	public int getRight() {
-		return this.right.getN();
+	public TNode getLeft() {
+		return left;
 	}
+
+	public void setLeft(TNode left) {
+		this.left = left;
+	}
+
+	public TNode getRight() {
+		return right;
+	}
+
+	public void setRight(TNode right) {
+		this.right = right;
+	}
+
 /*	
 	public boolean hasElem(int n) {
 		if(this.n == n) {
@@ -40,26 +51,6 @@ public class TNode {
 		return false;
 	}
 */
-	
-	public void add(int x) { //crea un arbol ordenado
-		if(this.n != 0) {
-			if(this.n < x) {
-				if(this.right != null) {
-					this.right.add(x);
-				}else {
-					this.right = new TNode(x);
-				}
-			}else {
-				if(this.left != null) {
-					this.left.add(x);
-				}else {
-					this.left = new TNode(x);
-				}	
-			}
-		}else {
-			this.n = x;
-		}	
-	}
 	
 	public void imprimir() {
 		if(this.left != null) {
@@ -136,24 +127,8 @@ public class TNode {
 		}
 		return lista;
 	}
-*/
-	
-	public ArrayList<Integer> getHojas(ArrayList<Integer> listaHojas){
-		if(isHoja()) {
-			listaHojas.add(this.n);
-		}else {
-			if(this.left != null) {
-				this.left.getHojas(listaHojas);
-			}
-			if(this.right != null) {
-				this.right.getHojas(listaHojas);
-			}
-			return listaHojas;
-		}
-		return listaHojas;
-	}
-	
-	private boolean isHoja() {
+*/	
+	public boolean isHoja() {
 		if((this.left == null)&&(this.right == null)){
 			return true;
 		}
